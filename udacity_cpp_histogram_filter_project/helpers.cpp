@@ -15,6 +15,7 @@
 #include <cmath>
 #include <string>
 #include <fstream> 
+#include <numeric>
 // #include "debugging_helpers.cpp"
 
 using namespace std;
@@ -36,6 +37,21 @@ vector< vector<float> > normalize(vector< vector <float> > grid) {
 	vector< vector<float> > newGrid;
 
 	// todo - your code here
+	float sum = 0;
+	for (int i = 0; i < grid.size(); i++)
+	{
+		sum += accumulate(grid[i].begin(), grid[i].end(), 0.0f);
+	}
+
+	for (int i = 0; i < grid.size(); i++)
+	{
+		vector<float> new_row;
+		for (int j = 0; j < grid[0].size(); j++)
+		{
+			new_row.push_back(grid[i][j] / sum);
+		}
+		newGrid.push_back(new_row);
+	}
 
 	return newGrid;
 }
