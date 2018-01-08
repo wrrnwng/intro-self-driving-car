@@ -38,17 +38,17 @@ vector< vector<float> > normalize(vector< vector <float> > grid) {
 
 	// todo - your code here
 	float sum = 0;
-	for (int i = 0; i < grid.size(); i++)
+	for (auto row : grid)
 	{
-		sum += accumulate(grid[i].begin(), grid[i].end(), 0.0f);
+		sum += accumulate(row.begin(), row.end(), 0.0f);
 	}
 
-	for (int i = 0; i < grid.size(); i++)
+	for (auto row : grid)
 	{
 		vector<float> new_row;
-		for (int j = 0; j < grid[0].size(); j++)
+		for (auto i : row)
 		{
-			new_row.push_back(grid[i][j] / sum);
+			new_row.push_back(row[i] / sum);
 		}
 		newGrid.push_back(new_row);
 	}
@@ -90,7 +90,9 @@ vector< vector<float> > normalize(vector< vector <float> > grid) {
     	   has been blurred.
 */
 vector < vector <float> > blur(vector < vector < float> > grid, float blurring) {
-	
+
+	vector<vector<float>> newGrid;
+
 	// your code here
 	int height = grid.size();
 	int width = grid[0].size();
@@ -104,7 +106,7 @@ vector < vector <float> > blur(vector < vector < float> > grid, float blurring) 
 			vector<float>{adjacent_prob, center_prob, adjacent_prob},
 			vector<float>{corner_prob, adjacent_prob, corner_prob}};
 
-	vector<vector<float>> newGrid (height, vector<float>(width, 0));
+	newGrid = vector<vector<float>> (height, vector<float> (width, 0));
 	for (int i = 0; i < height; i++)
 	{
 		for (int j = 0; j < width; j++) {
