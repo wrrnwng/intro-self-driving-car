@@ -42,8 +42,7 @@ vector< vector <float> > initialize_beliefs(vector< vector <char> > grid) {
 	vector< vector <float> > newGrid;
 
 	// your code here
-	newGrid = normalize(vector<vector<float>>(grid.size(), vector<float>(grid[0].size(), 1.0)));
-
+	
 	return newGrid;
 }
 
