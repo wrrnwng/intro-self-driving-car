@@ -83,10 +83,11 @@ You can test your code by running this function.
 Do that by first compiling this file and then 
 running the output.
 */
-// int main() {
+// int main()
+// {
 
-// 	vector < vector <char> > map;
-// 	vector <char> mapRow;
+// 	vector<vector<char>> map;
+// 	vector<char> mapRow;
 // 	int i, j, randInt;
 // 	char color;
 // 	std::vector<int> pose(2);
@@ -94,13 +95,15 @@ running the output.
 // 	for (i = 0; i < 4; i++)
 // 	{
 // 		mapRow.clear();
-// 		for (j=0; j< 4; j++)
+// 		for (j = 0; j < 4; j++)
 // 		{
 // 			randInt = rand() % 2;
-// 			if (randInt == 0 ) {
+// 			if (randInt == 0)
+// 			{
 // 				color = 'r';
 // 			}
-// 			else {
+// 			else
+// 			{
 // 				color = 'g';
 // 			}
 // 			mapRow.push_back(color);
@@ -108,7 +111,7 @@ running the output.
 // 		map.push_back(mapRow);
 // 	}
 // 	cout << "map is\n";
-// 	Simulation simulation (map, 0.1, 0.9, pose);
+// 	Simulation simulation(map, 0.1, 0.9, pose);
 // 	// simulation = Simulation(map, 0.1, 0.9, pose);
 // 	cout << "initialization success!\n";
 // 	show_grid(map);

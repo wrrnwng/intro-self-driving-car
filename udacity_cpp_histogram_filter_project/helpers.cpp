@@ -10,11 +10,12 @@
 	which are written in python.
 */
 
-#include <vector>
-#include <iostream>
 #include <cmath>
-#include <string>
 #include <fstream>
+#include <iostream>
+#include <numeric>
+#include <string>
+#include <vector>
 // #include "debugging_helpers.cpp"
 
 using namespace std;
@@ -37,6 +38,22 @@ vector<vector<float>> normalize(vector<vector<float>> grid)
 	vector<vector<float>> newGrid;
 
 	// todo - your code here
+	vector<float> new_row;
+	float grid_sum = 0;
+	for (auto row : grid)
+	{
+		grid_sum += accumulate(row.begin(), row.end(), 0.0f);
+	}
+
+	for (auto row : grid)
+	{
+		for (auto cell : row)
+		{
+			new_row.push_back(cell / grid_sum);
+		}
+		newGrid.push_back(new_row);
+		new_row.clear();
+	}
 
 	return newGrid;
 }
@@ -76,10 +93,48 @@ vector<vector<float>> normalize(vector<vector<float>> grid)
 */
 vector<vector<float>> blur(vector<vector<float>> grid, float blurring)
 {
+	if (blurring == 0)
+	{
+		return grid;
+	}
 
 	vector<vector<float>> newGrid;
 
 	// your code here
+	int height = grid.size();
+	int width = grid[0].size();
+
+	float center_prob = 1.0 - blurring;
+	float corner_prob = blurring / 12.0;
+	float adjacent_prob = blurring / 6.0;
+	float cell_value;
+	float multiply_by;
+	int new_row;
+	int new_col;
+
+	vector<vector<float>> window{
+			vector<float>{corner_prob, adjacent_prob, corner_prob},
+			vector<float>{adjacent_prob, center_prob, adjacent_prob},
+			vector<float>{corner_prob, adjacent_prob, corner_prob}};
+
+	newGrid = vector<vector<float>>(height, vector<float>(width, 0));
+
+	for (int grid_row = 0; grid_row < height; grid_row++)
+	{
+		for (int grid_col = 0; grid_col < width; grid_col++)
+		{
+			for (int dx = -1; dx < window.size() - 1; dx++)
+			{
+				for (int dy = -1; dy < window[0].size() - 1; dy++)
+				{
+					multiply_by = window[dx + 1][dy + 1];
+					new_row = (height + grid_row + dx) % height;
+					new_col = (width + grid_col + dy) % width;
+					newGrid[new_row][new_col] += grid[grid_row][grid_col] * multiply_by;
+				}
+			}
+		}
+	}
 
 	return normalize(newGrid);
 }

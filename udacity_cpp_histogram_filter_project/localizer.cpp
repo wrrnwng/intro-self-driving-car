@@ -43,6 +43,7 @@ vector<vector<float>> initialize_beliefs(vector<vector<char>> grid)
 	vector<vector<float>> newGrid;
 
 	// your code here
+	newGrid = normalize(vector<vector<float>>(grid.size(), vector<float>(grid[0].size(), 1.0)));
 
 	return newGrid;
 }
@@ -93,6 +94,24 @@ vector<vector<float>> sense(char color,
 	vector<vector<float>> newGrid;
 
 	// your code here
+	vector<float> new_row;
+
+	for (int row = 0; row < grid.size(); row++)
+	{
+		for (int col = 0; col < grid[0].size(); col++)
+		{
+			if (grid[row][col] == color)
+			{
+				new_row.push_back(p_hit * beliefs[row][col]);
+			}
+			else
+			{
+				new_row.push_back(p_miss * beliefs[row][col]);
+			}
+		}
+		newGrid.push_back(new_row);
+		new_row.clear();
+	}
 
 	return normalize(newGrid);
 }

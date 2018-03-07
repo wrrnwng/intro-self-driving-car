@@ -1,4 +1,8 @@
 {
   "python.pythonPath": "/Users/warren/.pyenv/versions/3.6.3/bin/python",
-  "python.linting.enabled": false
+  "python.linting.enabled": false,
+  "files.associations": {
+    "numeric": "cpp",
+    "iostream": "cpp"
+  }
 }
