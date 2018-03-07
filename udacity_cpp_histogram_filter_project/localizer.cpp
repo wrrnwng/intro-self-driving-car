@@ -161,6 +161,22 @@ vector<vector<float>> move(int dy, int dx,
 	vector<vector<float>> newGrid;
 
 	// your code here
+	int height = beliefs.size();
+	int width = beliefs[0].size();
+	int new_row;
+	int new_col;
+
+	newGrid = vector<vector<float>>(height, vector<float>(width, 0));
+
+	for (int row = 0; row < height; row++)
+	{
+		for (int col = 0; col < width; col++)
+		{
+			new_row = (height + row + dx) % height;
+			new_col = (width + col + dy) % width;
+			newGrid[new_row][new_col] = beliefs[row][col];
+		}
+	}
 
 	return blur(newGrid, blurring);
 }
