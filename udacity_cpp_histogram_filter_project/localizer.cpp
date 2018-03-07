@@ -38,11 +38,12 @@ using namespace std;
            0.25 0.25
            0.25 0.25
 */
-vector< vector <float> > initialize_beliefs(vector< vector <char> > grid) {
-	vector< vector <float> > newGrid;
+vector<vector<float>> initialize_beliefs(vector<vector<char>> grid)
+{
+	vector<vector<float>> newGrid;
 
 	// your code here
-	
+
 	return newGrid;
 }
 
@@ -83,19 +84,18 @@ vector< vector <float> > initialize_beliefs(vector< vector <char> > grid) {
     @return - a normalized two dimensional grid of floats 
     	   representing the updated beliefs for the robot. 
 */
-vector< vector <float> > sense(char color, 
-	vector< vector <char> > grid, 
-	vector< vector <float> > beliefs, 
-	float p_hit,
-	float p_miss) 
+vector<vector<float>> sense(char color,
+														vector<vector<char>> grid,
+														vector<vector<float>> beliefs,
+														float p_hit,
+														float p_miss)
 {
-	vector< vector <float> > newGrid;
+	vector<vector<float>> newGrid;
 
 	// your code here
 
 	return normalize(newGrid);
 }
-
 
 /**
 	TODO - implement this function 
@@ -134,12 +134,12 @@ vector< vector <float> > sense(char color,
     @return - a normalized two dimensional grid of floats 
     	   representing the updated beliefs for the robot. 
 */
-vector< vector <float> > move(int dy, int dx, 
-	vector < vector <float> > beliefs,
-	float blurring) 
+vector<vector<float>> move(int dy, int dx,
+													 vector<vector<float>> beliefs,
+													 float blurring)
 {
 
-	vector < vector <float> > newGrid;
+	vector<vector<float>> newGrid;
 
 	// your code here
 

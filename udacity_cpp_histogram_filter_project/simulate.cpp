@@ -13,22 +13,29 @@
 #include <algorithm>
 // #include "helpers.cpp"
 
-class Simulation {
-	
+class Simulation
+{
+
 private:
-	vector <char> get_colors() {
-		vector <char> all_colors;
+	vector<char> get_colors()
+	{
+		vector<char> all_colors;
 		char color;
-		int i,j;
-		for (i=0; i<height; i++) {
-			for (j=0; j<width; j++) {
+		int i, j;
+		for (i = 0; i < height; i++)
+		{
+			for (j = 0; j < width; j++)
+			{
 				color = grid[i][j];
-				if(std::find(all_colors.begin(), all_colors.end(), color) != all_colors.end()) {
-				    /* v contains x */
-				} else {
+				if (std::find(all_colors.begin(), all_colors.end(), color) != all_colors.end())
+				{
+					/* v contains x */
+				}
+				else
+				{
 					all_colors.push_back(color);
 					cout << "adding color " << color << endl;
-				    /* v does not contain x */
+					/* v does not contain x */
 				}
 			}
 		}
@@ -37,30 +44,28 @@ private:
 		return colors;
 	}
 
-public: 
-	vector < vector <char> > grid;
-	vector < vector <float> > beliefs;
+public:
+	vector<vector<char>> grid;
+	vector<vector<float>> beliefs;
 
 	float blur, p_hit, p_miss, incorrect_sense_prob;
 
 	int height, width, num_colors;
-	
+
 	std::vector<int> true_pose;
 	std::vector<int> prev_pose;
 
-	vector <char> colors;
-	Simulation(vector < vector<char> >, float, float, vector <int>);
-
+	vector<char> colors;
+	Simulation(vector<vector<char>>, float, float, vector<int>);
 };
 
 /**
 Constructor for the Simulation class.
 */
-Simulation::Simulation(vector < vector <char> > map, 
-	float blurring,
-	float hit_prob, 
-	std::vector<int> start_pos
-	) 
+Simulation::Simulation(vector<vector<char>> map,
+											 float blurring,
+											 float hit_prob,
+											 std::vector<int> start_pos)
 {
 	grid = map;
 	blur = blurring;
@@ -79,7 +84,7 @@ Do that by first compiling this file and then
 running the output.
 */
 // int main() {
-	
+
 // 	vector < vector <char> > map;
 // 	vector <char> mapRow;
 // 	int i, j, randInt;
@@ -94,7 +99,7 @@ running the output.
 // 			randInt = rand() % 2;
 // 			if (randInt == 0 ) {
 // 				color = 'r';
-// 			} 
+// 			}
 // 			else {
 // 				color = 'g';
 // 			}
